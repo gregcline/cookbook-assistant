@@ -5,6 +5,7 @@
     <tr>
       <td><%= render "recipe.html", recipe: recipe %></td>
       <td><%= link "View", to: recipe_path(@conn, :show, recipe.id) %></td>
+      <td><%= link "Add to Recipe Book", to: recipe_path(@conn, :index), class: "btn btn-default btn-xs" %></td>
     </tr>
   <% end %>
 </table>
