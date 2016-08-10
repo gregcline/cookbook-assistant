@@ -1,0 +1,21 @@
+<h1>Add New Recipe</h1>
+
+<%= form_for @conn, recipe_path(@conn, :create), [as: :recipe], fn f-> %>
+  <div class="form-group">
+    <%= text_input f, :name, placeholder: "Recipe Name", class: "form-control" %>
+  </div>
+    <div class="form-group">
+    <%= textarea f, :ingredients, placeholder: "Ingredient list, separate ingredients from amounts with a comma and two ingredients with a semicolon.", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= textarea f, :instructions, placeholder: "Instructions", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= textarea f, :tags, placeholder: "Tags, separate with a comma.", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= select f, :rating, 1..5, prompt: "Rating", class: "form-control" %>
+  </div>
+  <%= submit "Add Recipe", class: "btn btn-primary" %>
+<% end %>
+      

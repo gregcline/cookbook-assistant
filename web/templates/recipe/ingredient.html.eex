@@ -1,0 +1,4 @@
+<tr>
+  <td><%= @ingredient.name %></td>
+  <td><%= @ingredient.amount %></td>
+</tr>

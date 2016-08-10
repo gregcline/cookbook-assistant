@@ -1,0 +1,10 @@
+<h1>All Recipes</h1>
+
+<table class="table">
+  <%= for recipe <- @recipes do %>
+    <tr>
+      <td><%= render "recipe.html", recipe: recipe %></td>
+      <td><%= link "View", to: recipe_path(@conn, :show, recipe.id) %></td>
+    </tr>
+  <% end %>
+</table>

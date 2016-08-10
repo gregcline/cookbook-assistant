@@ -1,0 +1,21 @@
+<h1><%= @recipe.name %></h1>
+  <label>Ingredients</label>
+  <table class="table">
+    <%= for ingredient <- @recipe.ingredients do %>
+      <%= render "ingredient.html", ingredient: ingredient %>
+    <% end %>
+  </table>
+<div>
+  <label>Instructions</label>
+  <p><%= @recipe.instructions %></p>
+</div>
+<div>
+  <label>Tags</label>
+  <%= for tag <- @recipe.tags do %>
+    <p><%= tag %></p>
+  <% end %>
+</div>
+<div>
+  <label>Rating</label>
+  <%= Enum.sum(@recipe.ratings)/length(@recipe.ratings) %>
+</div>
