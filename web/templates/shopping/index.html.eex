@@ -1,0 +1,8 @@
+<h1>Shopping List</h1>
+<table class="table">
+  <%= for ingredient <- @ingredients do %>
+    <tr>
+      <td><%= checkbox :shopping, :checkbox, id: ingredient.name %><label for="<%= ingredient.name %>"><%= ingredient.name %> (<%= ingredient.amount %>)</td>
+    </tr>
+  <% end %>
+</table>

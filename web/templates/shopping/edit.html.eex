@@ -1,0 +1,13 @@
+<h1>Your Current Shopping List</h1>
+
+<table class="table">
+<%= for recipe <- @recipes do %>
+  <tr>
+    <td><%= recipe.name %>
+    <td class="text-right">
+      <%= link "Show", to: shopping_path(@conn, :index), class: "btn btn-default btn-xs" %>
+      <%= link "Remove", to: shopping_path(@conn, :index), method: :put, data: [confirm: "Remove this recipe from your shopping list?"], class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+</table>
