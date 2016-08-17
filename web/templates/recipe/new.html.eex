@@ -1,20 +1,30 @@
 <h1>Add New Recipe</h1>
 
-<%= form_for @conn, recipe_path(@conn, :create), [as: :recipe], fn f-> %>
+<%= form_for @changeset, recipe_path(@conn, :create), fn f-> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Sorry, there appear to be errors. Check the fields below.</p>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= text_input f, :name, placeholder: "Recipe Name", class: "form-control" %>
+    <%= error_tag f, :name %>
   </div>
     <div class="form-group">
-    <%= textarea f, :ingredients, placeholder: "Ingredient list, separate ingredients from amounts with a comma and two ingredients with a semicolon.", class: "form-control" %>
+    <%= textarea f, :ingredients_string, placeholder: "Ingredient list, separate ingredients from amounts with a comma and two ingredients with a semicolon.", class: "form-control" %>
+    <%= error_tag f, :ingredients_string %>
   </div>
   <div class="form-group">
     <%= textarea f, :instructions, placeholder: "Instructions", class: "form-control" %>
+    <%= error_tag f, :instructions %>
   </div>
   <div class="form-group">
-    <%= textarea f, :tags, placeholder: "Tags, separate with a comma.", class: "form-control" %>
+    <%= textarea f, :tags_string, placeholder: "Tags, separate with a comma.", class: "form-control" %>
+    <%= error_tag f, :tags_string %>
   </div>
   <div class="form-group">
-    <%= select f, :rating, 1..5, prompt: "Rating", class: "form-control" %>
+    <%= select f, :ratings, 1..5, prompt: "Rating", class: "form-control" %>
+    <%= error_tag f, :ratings %>
   </div>
   <%= submit "Add Recipe", class: "btn btn-primary" %>
 <% end %>

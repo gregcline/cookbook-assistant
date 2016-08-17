@@ -3,6 +3,7 @@ defmodule Cookbook.RecipeBookController do
   Handles the user's recipe book.
   """
   use Cookbook.Web, :controller
+  
   def recipes do
       [%{id: 1,
         name: "Recipe 1",

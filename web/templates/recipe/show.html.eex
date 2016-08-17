@@ -20,5 +20,9 @@
 </div>
 <div>
   <label>Rating</label>
-  <%= Enum.sum(@recipe.ratings)/length(@recipe.ratings) %>
+  <%= if length(@recipe.ratings) > 0 do %>
+    <%= Enum.sum(@recipe.ratings)/length(@recipe.ratings) %>
+  <% else %>
+    <p>No one has rated this recipe yet.</p>
+  <% end %>
 </div>

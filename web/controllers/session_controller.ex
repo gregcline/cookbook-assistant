@@ -3,7 +3,6 @@ defmodule Cookbook.SessionController do
   Handles creating new sessions and dropping sessions.
   """
   use Cookbook.Web, :controller
-  alias Cookbook.User
 
   def new(conn, _params) do
     render conn, "new.html"
