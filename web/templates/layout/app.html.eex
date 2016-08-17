@@ -17,13 +17,13 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
-              <li><%= link("View Shopping List", to: "/shopping") %></li>
-              <li><%= link("Manage Shopping List", to: "/shopping/edit") %></li>
-              <li><%= link("Recipe Book", to: "/book/edit") %></li>
+              <li class="active"><%= link("View Shopping List", to: "/shopping") %></li>
+              <li class="active"><%= link("Manage Shopping List", to: "/shopping/edit") %></li>
+              <li class="active"><%= link("Recipe Book", to: "/book/edit") %></li>
             <% end %>
-            <li><%= link("Browse Recipes", to: "/recipes") %></li>
+            <li class="active"><%= link("Browse Recipes", to: "/recipes") %></li>
             <%= if @current_user do %>
-              <li><%= @current_user.username %></li>
+              <li class="disabled"><%= link(@current_user.username, to: "#") %></li>
               <li><%= link("Log Out", to: "/sessions/delete", method: :delete) %></li>
             <% else %>
               <li><%= link("Log In", to: "/sessions/new") %></li>
