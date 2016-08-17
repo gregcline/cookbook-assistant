@@ -14,9 +14,11 @@
 </div>
 <div>
   <label>Tags</label>
+  <p>
   <%= for tag <- @recipe.tags do %>
-    <p><%= tag %></p>
+    <%= tag %>, 
   <% end %>
+  </p>
 </div>
 <div>
   <label>Rating</label>
