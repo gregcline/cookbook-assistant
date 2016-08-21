@@ -8,13 +8,10 @@
       <td><%= link "View", to: recipe_path(@conn, :show, recipe.id) %></td>
       <%= if @current_user do %>
         <td>
-        <%= render(Cookbook.SharedView, "recipe_book_form_add.html", current_user: @current_user, conn: @conn, recipe: recipe) %>
+        <%= render(Cookbook.SharedView, "recipe_book_form_add.html", current_user: @current_user, conn: @conn, recipe: recipe, style: "btn btn-default btn-xs") %>
         </td>
         <td>
-        <%= form_for @conn, shopping_path(@conn, :update, @current_user.id), [as: :update, method: "put", class: "form-tiny"], fn f -> %>
-          <%= hidden_input f, :recipe_id, value: recipe.id %>
-          <%= submit "Add to Shopping List", class: "btn btn-default btn-xs" %>
-        <% end %>
+        <%= render(Cookbook.SharedView, "shopping_list_form_add.html", current_user: @current_user, conn: @conn, recipe: recipe) %>
         </td>
       <% end %>
     </tr>

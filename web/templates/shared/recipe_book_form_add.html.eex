@@ -2,5 +2,5 @@
   <%= hidden_input f, :recipe_id, value: @recipe.id %>
   <%= hidden_input f, :req_path, value: @conn.request_path %>
   <%= hidden_input f, :action, value: "add" %>
-  <%= submit "Add to Recipe Book", class: "btn btn-default btn-xs" %>
+  <%= submit "Add to Recipe Book", class: @style %>
 <% end %>

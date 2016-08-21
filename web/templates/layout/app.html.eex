@@ -18,7 +18,7 @@
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
               <li class="active"><%= link("View Shopping List", to: "/shopping") %></li>
-              <li class="active"><%= link("Manage Shopping List", to: "/shopping/edit") %></li>
+              <li class="active"><%= link("Manage Shopping List", to: "/shopping/#{@current_user.id}/edit") %></li>
               <li class="active"><%= link("Recipe Book", to: "/book/#{@current_user.id}/edit") %></li>
             <% end %>
             <li class="active"><%= link("Browse Recipes", to: "/recipes") %></li>
