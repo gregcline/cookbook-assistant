@@ -6,6 +6,8 @@ defmodule Cookbook.RecipeController do
   alias Cookbook.Recipe
   alias Cookbook.Repo
 
+  plug :authenticate_user when action in [:new]
+
   def new(conn, _params) do
     changeset = Recipe.changeset(%Recipe{})
     render conn, "new.html", changeset: changeset

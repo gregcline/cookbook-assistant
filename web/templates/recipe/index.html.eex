@@ -1,12 +1,22 @@
 <h1>All Recipes</h1>
 <%= button("New Recipe", to: "/recipes/new", class: "btn btn-default", method: "get") %>
 
-<table class="table">
+<table class="table table-striped">
   <%= for recipe <- @recipes do %>
     <tr>
       <td><%= render "recipe.html", recipe: recipe %></td>
       <td><%= link "View", to: recipe_path(@conn, :show, recipe.id) %></td>
-      <td><%= link "Add to Recipe Book", to: recipe_path(@conn, :index), class: "btn btn-default btn-xs" %></td>
+      <%= if @current_user do %>
+        <td>
+        <%= render(Cookbook.SharedView, "recipe_book_form_add.html", current_user: @current_user, conn: @conn, recipe: recipe) %>
+        </td>
+        <td>
+        <%= form_for @conn, shopping_path(@conn, :update, @current_user.id), [as: :update, method: "put", class: "form-tiny"], fn f -> %>
+          <%= hidden_input f, :recipe_id, value: recipe.id %>
+          <%= submit "Add to Shopping List", class: "btn btn-default btn-xs" %>
+        <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

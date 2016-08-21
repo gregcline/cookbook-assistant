@@ -4,8 +4,10 @@
   <tr>
     <td><%= recipe.name %>
     <td class="text-right">
-      <%= link "Show", to: shopping_path(@conn, :index), class: "btn btn-default btn-xs" %>
-      <%= link "Remove", to: shopping_path(@conn, :index), method: :put, data: [confirm: "Remove this recipe from your shopping list?"], class: "btn btn-danger btn-xs" %>
+      <%= link "Show", to: recipe_path(@conn, :show, recipe.id), class: "btn btn-default btn-xs" %>
+    </td>
+    <td>
+      <%= render(Cookbook.SharedView, "recipe_book_form_del.html", current_user: @current_user, conn: @conn, recipe: recipe) %>
     </td>
   </tr>
 <% end %>

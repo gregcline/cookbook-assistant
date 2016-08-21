@@ -1,0 +1,6 @@
+<%= form_for @conn, recipe_book_path(@conn, :update, @current_user.id), [as: :update, method: "put", class: "form-tiny"], fn f -> %>
+  <%= hidden_input f, :recipe_id, value: @recipe.id %>
+  <%= hidden_input f, :req_path, value: @conn.request_path %>
+  <%= hidden_input f, :action, value: "del" %>
+  <%= submit "Remove from Recipe Book", class: "btn btn-danger btn-xs" %>
+<% end %>

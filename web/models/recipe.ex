@@ -29,15 +29,6 @@ defmodule Cookbook.Recipe do
   end
 
   defp add_ingredients(changeset, %{"ingredients_string" => ingredients_string}) do
-    # case parse_ingredients(ingredients_string) do
-    #   %Ecto.Changeset{valid?: false} = ingredients_changeset ->
-    #     changeset
-    #     |> Ecto.Changeset.put_assoc(:ingredients, ingredients_changeset)
-    #     |> Ecto.Changeset.add_error(:ingredients_string, "Please insert an ingredient and an amount")
-    #   ingredients_changeset ->
-    #     changeset
-    #     |> Ecto.Changeset.put_assoc(:ingredients, ingredients_changeset)
-    # end
     ingredients_changesets = parse_ingredients(ingredients_string)
     valid_length = length(Enum.take_while(ingredients_changesets, fn changeset -> changeset.valid? end))
     all_length = length(ingredients_changesets)

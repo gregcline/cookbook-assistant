@@ -46,4 +46,14 @@ defmodule Cookbook.Auth do
         {:error, :not_found, conn}
     end
   end
+
+  def authenticate_user(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be signed in to use that page.")
+      |> redirect(to: Helpers.page_path(conn, :index))
+    end
+  end
 end

@@ -36,6 +36,7 @@ defmodule Cookbook.Web do
 
       import Cookbook.Router.Helpers
       import Cookbook.Gettext
+      import Cookbook.Auth, only: [authenticate_user: 2]
     end
   end
 

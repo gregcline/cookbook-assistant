@@ -19,7 +19,7 @@
             <%= if @current_user do %>
               <li class="active"><%= link("View Shopping List", to: "/shopping") %></li>
               <li class="active"><%= link("Manage Shopping List", to: "/shopping/edit") %></li>
-              <li class="active"><%= link("Recipe Book", to: "/book/edit") %></li>
+              <li class="active"><%= link("Recipe Book", to: "/book/#{@current_user.id}/edit") %></li>
             <% end %>
             <li class="active"><%= link("Browse Recipes", to: "/recipes") %></li>
             <%= if @current_user do %>
