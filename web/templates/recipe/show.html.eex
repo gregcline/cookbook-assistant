@@ -1,7 +1,9 @@
 <h1><%= @recipe.name %></h1>
 <div>
-<%= render(Cookbook.SharedView, "recipe_book_form_add.html", conn: @conn, current_user: @current_user, recipe: @recipe, style: "btn btn-default") %>
-<%= render(Cookbook.SharedView, "shopping_list_form_add.html", conn: @conn, current_user: @current_user, recipe: @recipe, style: "btn btn-default") %>
+<%= if @current_user do %>
+  <%= render(Cookbook.SharedView, "recipe_book_form_add.html", conn: @conn, current_user: @current_user, recipe: @recipe, style: "btn btn-default") %>
+  <%= render(Cookbook.SharedView, "shopping_list_form_add.html", conn: @conn, current_user: @current_user, recipe: @recipe, style: "btn btn-default") %>
+<% end %>
 </div>
   <label>Ingredients</label>
   <table class="table">
