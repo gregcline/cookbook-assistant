@@ -1,5 +1,7 @@
 <h1>All Recipes</h1>
-<%= button("New Recipe", to: "/recipes/new", class: "btn btn-default", method: "get") %>
+<%= if @current_user do %>
+  <%= button("New Recipe", to: "/recipes/new", class: "btn btn-default", method: "get") %>
+<% end %>
 
 <table class="table table-striped">
   <%= for recipe <- @recipes do %>
