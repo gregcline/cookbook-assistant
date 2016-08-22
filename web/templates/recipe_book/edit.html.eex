@@ -7,6 +7,8 @@
       <%= link "Show", to: recipe_path(@conn, :show, recipe.id), class: "btn btn-default btn-xs" %>
     </td>
     <td>
+      <%= render(Cookbook.SharedView, "shopping_list_form_add.html", current_user: @current_user, conn: @conn, recipe: recipe, style: "btn btn-default btn-xs") %>
+    <td>
       <%= render(Cookbook.SharedView, "recipe_book_form_del.html", current_user: @current_user, conn: @conn, recipe: recipe) %>
     </td>
   </tr>
