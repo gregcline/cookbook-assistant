@@ -13,7 +13,7 @@
   </table>
 <div>
   <label>Instructions</label>
-  <p><%= @recipe.instructions %></p>
+  <p><%= text_to_html(@recipe.instructions) %></p>
 </div>
 <div>
   <label>Tags</label>
