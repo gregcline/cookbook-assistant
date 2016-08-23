@@ -50,7 +50,7 @@ defmodule Cookbook.Recipe do
     |> Enum.map(fn ingredient ->
       case String.split(ingredient, ",", trim: true) do
         [name, amount] ->
-          changeset = Ingredient.changeset(%Ingredient{}, %{"name" => name, "amount" => amount})
+          changeset = Ingredient.changeset(%Ingredient{}, %{"name" => String.trim(name), "amount" => String.trim(amount)})
         _ ->
           Ingredient.changeset(%Ingredient{}, %{})
           |> add_error(:name, "Please insert an ingredient and amount")

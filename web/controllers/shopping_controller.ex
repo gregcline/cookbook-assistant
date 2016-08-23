@@ -12,10 +12,11 @@ defmodule Cookbook.ShoppingController do
     query = ShoppingList.filter_by_user(conn.assigns.current_user.id)
     shopping_list_entries = Repo.all(query)
     ingredients = shopping_list_entries
-    |> Enum.flat_map(fn %ShoppingList{recipe: recipe} ->
+    |> Stream.flat_map(fn %ShoppingList{recipe: recipe} ->
       recipe = Repo.preload(recipe, :ingredients)
       recipe.ingredients
     end)
+    |> Enum.sort(&sort_ingredient_name/2)
     render conn, "index.html", ingredients: ingredients
   end
 
@@ -72,5 +73,9 @@ This is probably a bad way to do it.
         |> put_flash(:error, "Unable to delete the recipe from your book.")
         |> redirect(to: req_path)
     end
+  end
+
+  defp sort_ingredient_name(%Cookbook.Ingredient{name: ing1}, %Cookbook.Ingredient{name: ing2}) do
+    String.trim(ing1) < String.trim(ing2)
   end
 end
